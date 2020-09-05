@@ -30,8 +30,11 @@ class _WeatherDetailState extends State<WeatherDetail> {
       body: (weatherData == null?Center(
         child: CircularProgressIndicator(),
       ):
-          ListView.builder(
-            itemCount: weatherData == null ? 0 : weatherData['list'].length,
+      ( weatherData == null || weatherData['list']==null) ?Center(
+          child: Text('La ville est introuvable !!!',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.red),)
+            )
+          :ListView.builder(
+            itemCount: weatherData == null || weatherData['list']==null ? 0 : weatherData['list'].length,
               itemBuilder: (context,index){
                 return Card(
                   color: Colors.deepOrangeAccent,
